@@ -1,0 +1,170 @@
+<?php
+   include("config.php");
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.standalone.min.css">
+  <link rel="stylesheet" href="now-ui-kit.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/nucleo-icons.css" type="text/css">
+  <script src="assets/js/navbar-ontop.js"></script>
+  <link rel="icon" href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+  <title>International Relation Office</title>
+  <meta name="description" content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
+  <meta name="keywords" content="bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, now ui, now ui kit, creative tim, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit">
+</head>
+
+<body class="">
+  <?php
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+       $nama = $_POST['nama'];
+       $email = $_POST['email'];
+       $nim = $_POST['nim'];
+       $program = $_POST['program'];
+       $scholarship = $_POST['scholarship'];
+
+       $sql = "INSERT INTO enrollment (nama, nim, email, program, scholarship) VALUES ('$nama', '$nim', '$email', '$program', '$scholarship')";
+
+      if (mysqli_query($db, $sql)) {
+        echo "New record created successfully";
+        header("location: ../");
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($db);
+      }
+    }
+  ?>
+  <nav class="navbar bg-primary navbar-dark sticky-top">
+    <div class="container"> <a class="navbar-brand" href="#" contenteditable="true">International Relation Office</a> </div>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto col-xl-8 col-md-10">
+          <h2 class="my-3 text-center">
+            <b>Enrollment Page</b></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form action="" method="post">
+    <div class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="pt-3 col-md-2" style="">
+            <h4>Name</h4>
+          </div>
+          <div class="col-md-9 " style="">
+            <div class="form-group"><input type="text" class="form-control form-control-lg" placeholder="Your name" name="nama" required="required"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="pt-3 col-md-2" style="">
+            <h4>Email</h4>
+          </div>
+          <div class="col-md-9 " style="">
+            <div class="form-group"><input type="text" class="form-control form-control-lg" placeholder="Your email" name="email" required="required"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="pt-3 col-md-2" style="">
+            <h4>NIM</h4>
+          </div>
+          <div class="col-md-9 " style="">
+            <div class="form-group"><input type="int" class="form-control form-control-lg" placeholder="Your NIM" name="nim" required="required"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 pt-1" style="">
+            <h4>Program's City/Country</h4>
+          </div>
+          <div class="col-md-9 " style="">
+            <div class="form-group"><input type="text" class="form-control form-control-lg" placeholder="The mobility program's city/country you chose" name="program" required="required"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 pt-1" style="">
+            <h4>Scholarship</h4>
+          </div>
+          <div class="col-md-6" style="">
+            <li class="nav-item dropdown text-primary mx-0" >
+              <select name="scholarship" class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false" name="scholarship"><b>Choose Scholarship</b></a>
+                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 66px, 0px); top: 0px; left: 0px; will-change: transform;">
+                  <option class="dropdown-item text-dark" bg-primary value="Stipendium Hungarcium Scholarship Programme 2019 - 2020">Stipendium Hungarcium Scholarship Programme 2019 - 2020</a>
+                  <option class="dropdown-item" value="ISCP Scholarships at University of Oregon USA 2019">ISCP Scholarships at University of Oregon USA 2019</a>
+                  <option class="dropdown-item" value="UCSI University Graduate Scholarship for International 2019">UCSI University Graduate Scholarship for International 2019</a>
+                  <option class="dropdown-item" value="PhD Scholarship in Tumour Biology at CHIRI Australia 2019">PhD Scholarship in Tumour Biology at CHIRI Australia 2019</a>
+                </div>
+              </select>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 offset-md-9"><button type="submit" class="btn rounded btn-lg btn-primary text-body mt-4 py-0">
+              <h3 class="mt-4" style=""><b>SUBMIT</b></h3>
+            </button></div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="pt-5 bg-dark" style="">
+    <div class="container">
+      <div class="row mt-4 py-5">
+        <div class="col-md-12 text-center">
+          <h3 class="mb-5 text-center">Thank you for supporting us!</h3>
+          <button class="btn btn-icon rounded btn-lg btn-light mx-1 btn-twitter" type="button" data-placement="top" data-toggle="tooltip" title="" data-original-title="Follow us">
+            <i class="fa fa-fw fa-2x fa-twitter"></i>
+          </button>
+          <button class="btn btn-icon rounded btn-lg btn-light mx-1 btn-facebook" type="button" data-placement="top" data-toggle="tooltip" title="" data-original-title="Like us">
+            <i class="fa fa-fw fa-2x fa-facebook-square"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div> </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="assets/js/parallax.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="popover"]').popover();
+      $('[data-toggle="tooltip"]').tooltip();
+      $('#datepicker-example').datepicker({
+        calendarWeeks: true,
+        autoclose: true,
+        todayHighlight: true
+      });
+    });
+  </script>
+</body>
+
+</html>
